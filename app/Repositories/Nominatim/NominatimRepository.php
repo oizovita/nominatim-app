@@ -6,13 +6,19 @@ use App\Repositories\Nominatim\Dto\NominatimGeoJsonDto;
 use App\Repositories\Nominatim\Exceptions\NominatimClientException;
 use App\Repositories\Nominatim\Exceptions\NominatimServerException;
 use App\Repositories\Nominatim\Exceptions\NominatimUnknownException;
-use Generator;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 
+/**
+ * Class NominatimRepository
+ */
 class NominatimRepository
 {
 
+    /**
+     * @param RequestException $exception
+     * @return mixed
+     */
     private function handleException(RequestException $exception)
     {
         if ($exception->getCode() >= 500) {
@@ -24,6 +30,11 @@ class NominatimRepository
         }
     }
 
+    /**
+     * @param $country
+     * @param $state
+     * @return NominatimGeoJsonDto
+     */
     public function getPolygon($country, $state): NominatimGeoJsonDto
     {
         try {
@@ -40,13 +51,6 @@ class NominatimRepository
             return new NominatimGeoJsonDto($data[0]['geojson']);
         } catch (RequestException $requestException) {
             $this->handleException($requestException);
-        }
-    }
-
-    public function getPolygons($country, $states): Generator
-    {
-        foreach ($states as $state) {
-            yield $this->getPolygon($country, $state);
         }
     }
 }

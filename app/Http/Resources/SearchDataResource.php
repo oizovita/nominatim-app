@@ -5,6 +5,9 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class SearchDataResource
+ */
 class SearchDataResource extends JsonResource
 {
     /**
@@ -16,8 +19,8 @@ class SearchDataResource extends JsonResource
     {
         return [
             'geo' => [
-                'oblast' => $this->name,
-                'cache' => $this->cache
+                'oblast' => $this->resource['oblast']->name,
+                'cache' => $this->resource['cache']
             ]
         ];
     }

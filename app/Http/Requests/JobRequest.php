@@ -4,11 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class RefreshDataRequest
- * @package App\Http\Requests
- */
-class SearchDataRequest extends FormRequest
+class JobRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +22,7 @@ class SearchDataRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lat' => ['required', 'numeric'],
-            'lon' => ['required', 'numeric'],
+            'limit' => ['required', 'integer', 'min:1', 'max:100'],
         ];
     }
 }

@@ -8,6 +8,10 @@ use App\Models\Oblast;
 use App\Repositories\Nominatim\Dto\NominatimGeoJsonDto;
 use App\Repositories\Nominatim\NominatimRepository;
 
+/**
+ * Class ImportPolygonsFromNominatim
+ * @package App\Services\Oblast
+ */
 class ImportPolygonsFromNominatim
 {
     public const STATES = [
@@ -30,11 +34,9 @@ class ImportPolygonsFromNominatim
         'Odessa Oblast',
         'Poltava Oblast',
         'Rivne Oblast',
-        'Sumy Oblast',
         'Ternopil Oblast',
         'Kharkiv Oblast',
         'Kherson Oblast',
-        'Khmelnytskyi Oblast',
         'Cherkasy Oblast',
         'Chernivtsi Oblast',
         'Chernihiv Oblast',
